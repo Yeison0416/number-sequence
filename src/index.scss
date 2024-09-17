@@ -1,9 +1,5 @@
-body {
-    background: black;
-    color: red;
-}
-
-h1 {
-    color: #fff;
-    font-size: 24px;
+#app-root {
+    height: 100vh;
+    display: grid;
+    place-content: center;
 }

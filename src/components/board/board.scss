@@ -1,0 +1,14 @@
+.board-container {
+    display: grid;
+    grid-template-columns: repeat(3, 200px);
+    gap: 2px;
+
+    .board-element {
+        display: flex;
+        height: 200px;
+        justify-content: center;
+        align-items: center;
+        font-size: 32px;
+        border: 1px solid #b98516;
+    }
+}
