@@ -4,11 +4,13 @@ const data = {
     boardButtons: [
         {
             buttonLabel: ['start', 'stop'],
-            currentState: 0,
+            labelState: 0,
+            state: false,
         },
         {
             buttonLabel: ['reset'],
-            currentState: 0,
+            labelState: 0,
+            state: true,
         },
     ],
 };
