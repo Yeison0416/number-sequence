@@ -18,17 +18,34 @@ const FALLBACK_BUTTON_DATA = [
 ];
 
 const button = (buttonData = FALLBACK_BUTTON_DATA) => {
-    const handleButtonsClickEvent = (startButton, resetButton) => {
+    const handlerButtonsClickEvent = (startButton, resetButton) => {
+        const startEvent = new CustomEvent('startButtonEvent', {
+            detail: {
+                id: 'start-button-event',
+                startButton,
+            },
+        });
+
+        const resetEvent = new CustomEvent('resetButtonEvent', {
+            detail: {
+                id: 'reset-button-event',
+                resetButton,
+            },
+        });
+
         startButton.startButtonNode.addEventListener('click', () => {
             startButton.labelState = (startButton.labelState + 1) % startButton.buttonLabel.length;
             startButton.startButtonNode.innerText = startButton.buttonLabel[startButton.labelState];
             resetButton.resetButtonNode.disabled = false;
+            document.dispatchEvent(startEvent);
         });
 
         resetButton.resetButtonNode.addEventListener('click', () => {
             resetButton.resetButtonNode.disabled = true;
+            resetButton.labelState = 1;
             startButton.labelState = 0;
             startButton.startButtonNode.innerText = startButton.buttonLabel[startButton.labelState];
+            document.dispatchEvent(resetEvent);
         });
     };
 
@@ -57,7 +74,7 @@ const button = (buttonData = FALLBACK_BUTTON_DATA) => {
             buttonsContainer.appendChild(startButton);
             buttonsContainer.appendChild(resetButton);
 
-            handleButtonsClickEvent(startButtonObject, resetButtonObject);
+            handlerButtonsClickEvent(startButtonObject, resetButtonObject);
 
             return buttonsContainer;
         },
