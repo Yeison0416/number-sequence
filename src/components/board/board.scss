@@ -10,5 +10,9 @@
         align-items: center;
         font-size: 32px;
         border: 1px solid #b98516;
+
+        &--turn-on {
+            background-color: red;
+        }
     }
 }
